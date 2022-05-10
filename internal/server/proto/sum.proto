@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "example/microabstraction/api/server/proto";
+option go_package = "example/microabstraction/internal/server/proto";
 
 package server;
 
@@ -9,10 +9,10 @@ service SumService {
 }
 
 message SumRequest {
-  int32 a = 1;
-  int32 b = 2;
+  float a = 1;
+  float b = 2;
 }
 
 message SumResponse {
-  int32 result = 1;
+  float result = 1;
 }

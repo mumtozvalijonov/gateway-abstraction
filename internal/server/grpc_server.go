@@ -8,7 +8,7 @@ import (
 	"log"
 	"net"
 
-	pb "example/microabstraction/api/server/proto"
+	pb "example/microabstraction/internal/server/proto"
 
 	"google.golang.org/grpc"
 )
@@ -31,7 +31,7 @@ func (s *server) Sum(ctx context.Context, in *pb.SumRequest) (*pb.SumResponse, e
 	return &pb.SumResponse{Result: sum}, nil
 }
 
-func (s GrpcServer) Run() {
+func (s *GrpcServer) Run() {
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {

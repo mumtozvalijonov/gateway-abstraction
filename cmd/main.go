@@ -1,12 +1,28 @@
 package main
 
 import (
-	"example/microabstraction/api/server"
+	cube_client "example/microabstraction/external/client/cube"
+	square_client "example/microabstraction/external/client/square"
+	"example/microabstraction/internal/server"
+	manager "example/microabstraction/internal/server/manager"
 	"example/microabstraction/internal/service"
+	"log"
 )
 
 func main() {
-	sumService := service.NewSumService()
-	server := server.NewGrpcServer(sumService)
-	server.Run()
+	cubeClient, err := cube_client.NewCubeGrpcClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+	squareClient, err := square_client.NewSquareRestfulClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+	sumService := service.NewSumService(squareClient, cubeClient)
+	srv := server.NewRestfulServer(sumService)
+	manager, err := manager.NewServerManager(srv)
+	if err != nil {
+		log.Fatal(err)
+	}
+	manager.StartServer()
 }

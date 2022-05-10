@@ -11,12 +11,12 @@ type RestfulServer struct {
 	sumService *service.SumService
 }
 
-func (s RestfulServer) Run() {
+func (s *RestfulServer) Run() {
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		sum := s.sumService.GetSum(1, 2)
-		return c.SendString(fmt.Sprintf("Hello, World 👋! %d", sum))
+		return c.SendString(fmt.Sprintf("Hello, World 👋! %f", sum))
 	})
 
 	app.Listen(":3000")
