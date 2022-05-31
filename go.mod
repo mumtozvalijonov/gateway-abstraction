@@ -12,6 +12,8 @@ require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
+	github.com/pierrec/lz4/v4 v4.1.14 // indirect
+	github.com/segmentio/kafka-go v0.4.31 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.35.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect

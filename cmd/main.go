@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	cubeClient, err := cube_client.NewCubeGrpcClient()
+	cubeClient, err := cube_client.NewCubeRestfulClient()
 	if err != nil {
 		log.Fatal(err)
 	}
-	squareClient, err := square_client.NewSquareRestfulClient()
+	squareClient, err := square_client.NewSquareGrpcClient()
 	if err != nil {
 		log.Fatal(err)
 	}
